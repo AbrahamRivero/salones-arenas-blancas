@@ -43,14 +43,13 @@
          visible="false"
          distorted="true"
          scale="1.0"
-         url.flash="%SWFPATH%/graphics/videoplayer.swf"
          url.html5="%FIRSTXML%/graphics/videoplayer.js"
          loop="false"
          autoresume="true"
          pausedonstart="true"
          pauseothersounds="true"
          canstart="false"
-         onvideocomplete="tween(alpha, 0, 0.5, easeOutQuad, if(device.html5,stop();,delayedcall(0.01,play();pause();););set(hotspot[get(videocontrolplay)].visible, true);set(hotspot[get(videocontrolpause)].visible, false);set(stateVideo,'startplaying');dec(videospots_playing);resumeTourSoundsActions(true,true,true,true,true););"
+         onvideocomplete="tween(alpha, 0, 0.5, easeOutQuad, if(device.html5,stop();,delayedcall(0.01,play();pause();););set(stateVideo,'startplaying');dec(videospots_playing);resumeTourSoundsActions(true,true,true,true,true););"
          onhover="onhoverRectVideoDefaultVideoSpotStyle"
          onout="onoutRectVideoDefaultVideoSpotStyle"
          onvideoready="onvideoreadyRectVideoDefaultVideoSpotStyle"
@@ -61,19 +60,9 @@
   <style name="RectVideoDefaultVideoSpotStyle" stateVideo="startpaused"/>
   <action name="onhoverRectVideoDefaultVideoSpotStyle">
     showTooltip('hotspot');
-    if(hotspot[get(videocontrolpause)].visible == false,
-      if(hotspot[get(videocontrolplay)].visible == false,
-        set(hotspot[get(videocontrolpause)].visible, true);
-      );
-    );
   </action>
   <action name="onoutRectVideoDefaultVideoSpotStyle">
     hideTooltip();
-    ifnot(ispaused,
-      if(hotspot[get(videocontrolpause)].visible,
-        set(hotspot[get(videocontrolpause)].visible, false);
-      );
-    );
   </action>
   <action name="onvideoreadyRectVideoDefaultVideoSpotStyle">
     set(isVideoReadyForPlaying, false);
@@ -114,7 +103,6 @@
         );
       );
     );
-    onvideoreadycontrols();
     ,
 
       delayedcall(0.5,onvideoreadyRectVideoDefaultVideoSpotStyle());
@@ -593,9 +581,9 @@
 		<option name="slideshow_autoplay" value="false" type="bool" />
 		<option name="slideshow" value="5000" type="int" />
 		<option name="container_auto_size" value="true" type="bool" />
-		<option name="container_width" value="100" type="int" />
+		<option name="container_width" value="70" type="int" />
 		<option name="container_width_unit" value="percent" type="string" />
-		<option name="container_height" value="100" type="int" />
+		<option name="container_height" value="50" type="int" />
 		<option name="container_height_unit" value="percent" type="string" />
 		<option name="container_color" value="ffffff" type="string" />
 		<option name="container_alpha" value="0.80000000000000004" type="float" />
@@ -907,8 +895,8 @@
 		<option name="overlay_color" value="000000" type="string" />
 		<option name="overlay_alpha" value="0.50000762951094835" type="float" />
 
-		<option name="area_width" value="40" type="int" />
-		<option name="area_height" value="33" type="int" />
+		<option name="area_width" value="55" type="int" />
+		<option name="area_height" value="50" type="int" />
 		<option name="area_width_unit" value="percent" type="string" />
 		<option name="area_height_unit" value="percent" type="string" />
 		<option name="animation" value="true" type="bool" />
@@ -1376,7 +1364,7 @@
 <!-- ********** -->
 
 
-  <layer align="topleft"
+  <layer align="topright"
          x="20"
          y="20"
          zorder="7"
@@ -1500,7 +1488,6 @@ getmessage(urltoopen,logowebsiteurl);openurl(get(urltoopen),_blank);
 	
 		
     <layer name="thumbsScrollArea_thumbnailsBar_theme02"
-           url.flash="%FIRSTXML%/graphics/scrollarea.swf"
            url.html5="%FIRSTXML%/graphics/scrollarea.js"
            align="left" x="0" y="0"
            onhover_autoscrolling="false"
@@ -2281,32 +2268,6 @@ getmessage(urltoopen,logowebsiteurl);openurl(get(urltoopen),_blank);
 
 
 <!-- ********** -->
-<!-- Force Landscape on Mobile -->
-<!-- id : ForceLandscapeMobilePlugin -->
-<!-- ********** -->
-
-	<events name="mobileorientation_events" devices="mobile" keep="true" onresize="mobileorientation_portrait_mode_check();"/>
-
-	<action name="mobileorientation_portrait_mode_check" device="mobile">
-		div(aspect, stagewidth, stageheight);
-		if(aspect != lastaspect OR '%1' == 'true',
-			copy(lastaspect, aspect);
-			if(stagewidth GT stageheight,
-				tween(layer[mobileorientation_rotate_device_required].alpha, 0.0, 0.0);
-			,
-				tween(layer[mobileorientation_rotate_device_required].alpha, 1.0);
-				delayedcall(3.0, tween(layer[mobileorientation_rotate_device_required].alpha, 0.0, 1.0););
-			);
-		);
-	</action>	
-
-	<layer name="mobileorientation_rotate_device_required" keep="true" devices="mobile" 
-		url="%FIRSTXML%/graphics/rotate_device.png" width="80%" height="prop"
-		align="center" edge="center"
-		autoalpha="true" alpha="0.0"
-		enabled="false"
-		/>	
-<!-- ********** -->
 <!-- Mail -->
 <!-- id : button -->
 <!-- ********** -->
@@ -2317,7 +2278,7 @@ getmessage(urltoopen,logowebsiteurl);openurl(get(urltoopen),_blank);
          align="bottomright"
          x="20"
          y="20"
-         zorder="10"
+         zorder="9"
          visible="false"
          onclick="buttonOnClick"
          tooltip="buttontooltip"
@@ -2352,7 +2313,7 @@ getmessage(urltoopen,logowebsiteurl);openurl(get(urltoopen),_blank);
          align="bottomright"
          x="20"
          y="105"
-         zorder="11"
+         zorder="10"
          visible="false"
          onclick="button1OnClick"
          tooltip="button1tooltip"
@@ -2387,7 +2348,7 @@ getmessage(urltoopen,logowebsiteurl);openurl(get(urltoopen),_blank);
          align="bottomright"
          x="20"
          y="190"
-         zorder="12"
+         zorder="11"
          visible="false"
          onclick="button2OnClick"
          tooltip="button2tooltip"
@@ -2411,20 +2372,19 @@ getmessage(urltoopen,logowebsiteurl);openurl(get(urltoopen),_blank);
   <action name="showbutton2">if(tour_displaycontrols,set(layer[button2].visible, true);,hidebutton2(););</action>
 
 
-  <!-- Tour Information -->
-  <action name="hideTourInfo">set(tour_displayinfo, false);events.dispatch(onhidetourinfo);</action>
-  <action name="showTourInfo">set(tour_displayinfo, true); events.dispatch(onshowtourinfo);</action>
-
-
   <!-- Hide / Show Controls -->
   <action name="hideTourControls">set(tour_displaycontrols, false);events.dispatch(hidetourcontrols);</action>
   <action name="showTourControls">set(tour_displaycontrols, true); events.dispatch(showtourcontrols);</action>
 
 
+  <!-- Tour Information -->
+  <action name="hideTourInfo">set(tour_displayinfo, false);events.dispatch(onhidetourinfo);</action>
+  <action name="showTourInfo">set(tour_displayinfo, true); events.dispatch(onshowtourinfo);</action>
+
+
   <!-- Sounds Management -->
   <plugin name="soundinterface"
           preload="true"
-          url.flash="%SWFPATH%/graphics/soundinterface.swf"
           url.html5="%FIRSTXML%/graphics/soundinterface.js"
           rootpath="%$videos_sounds_path%/sounds"
           backgroundsound=""

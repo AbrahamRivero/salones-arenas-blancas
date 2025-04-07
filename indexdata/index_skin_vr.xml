@@ -43,14 +43,13 @@
          visible="false"
          distorted="true"
          scale="1.0"
-         url.flash="%SWFPATH%/graphics/videoplayer.swf"
          url.html5="%FIRSTXML%/graphics/videoplayer.js"
          loop="false"
          autoresume="true"
          pausedonstart="true"
          pauseothersounds="true"
          canstart="false"
-         onvideocomplete="tween(alpha, 0, 0.5, easeOutQuad, if(device.html5,stop();,delayedcall(0.01,play();pause();););set(hotspot[get(videocontrolplay)].visible, true);set(hotspot[get(videocontrolpause)].visible, false);set(stateVideo,'startplaying');dec(videospots_playing);resumeTourSoundsActions(true,true,true,true,true););"
+         onvideocomplete="tween(alpha, 0, 0.5, easeOutQuad, if(device.html5,stop();,delayedcall(0.01,play();pause();););set(stateVideo,'startplaying');dec(videospots_playing);resumeTourSoundsActions(true,true,true,true,true););"
          onhover="onhoverRectVideoDefaultVideoSpotStyle"
          onout="onoutRectVideoDefaultVideoSpotStyle"
          onvideoready="onvideoreadyRectVideoDefaultVideoSpotStyle"
@@ -61,19 +60,9 @@
   <style name="RectVideoDefaultVideoSpotStyle" stateVideo="startpaused"/>
   <action name="onhoverRectVideoDefaultVideoSpotStyle">
     showTooltip('hotspot');
-    if(hotspot[get(videocontrolpause)].visible == false,
-      if(hotspot[get(videocontrolplay)].visible == false,
-        set(hotspot[get(videocontrolpause)].visible, true);
-      );
-    );
   </action>
   <action name="onoutRectVideoDefaultVideoSpotStyle">
     hideTooltip();
-    ifnot(ispaused,
-      if(hotspot[get(videocontrolpause)].visible,
-        set(hotspot[get(videocontrolpause)].visible, false);
-      );
-    );
   </action>
   <action name="onvideoreadyRectVideoDefaultVideoSpotStyle">
     set(isVideoReadyForPlaying, false);
@@ -114,7 +103,6 @@
         );
       );
     );
-    onvideoreadycontrols();
     ,
 
       delayedcall(0.5,onvideoreadyRectVideoDefaultVideoSpotStyle());
@@ -292,20 +280,19 @@
 
 
 
-  <!-- Tour Information -->
-  <action name="hideTourInfo">set(tour_displayinfo, false);events.dispatch(onhidetourinfo);</action>
-  <action name="showTourInfo">set(tour_displayinfo, true); events.dispatch(onshowtourinfo);</action>
-
-
   <!-- Hide / Show Controls -->
   <action name="hideTourControls">set(tour_displaycontrols, false);events.dispatch(hidetourcontrols);</action>
   <action name="showTourControls">set(tour_displaycontrols, true); events.dispatch(showtourcontrols);</action>
 
 
+  <!-- Tour Information -->
+  <action name="hideTourInfo">set(tour_displayinfo, false);events.dispatch(onhidetourinfo);</action>
+  <action name="showTourInfo">set(tour_displayinfo, true); events.dispatch(onshowtourinfo);</action>
+
+
   <!-- Sounds Management -->
   <plugin name="soundinterface"
           preload="true"
-          url.flash="%SWFPATH%/graphics/soundinterface.swf"
           url.html5="%FIRSTXML%/graphics/soundinterface.js"
           rootpath="%$videos_sounds_path%/sounds"
           backgroundsound=""

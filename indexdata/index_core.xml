@@ -69,7 +69,9 @@
     events.dispatch(hotspots_visibility_changed);
   </action>
 
-  <events name="hideShowHotspotsOnNewPanoEvent" onPanoStart="hideShowHotspotsOnNewPanoAction" keep="true"/>
+  <krpano hideShowHotspotsOnNewPanoState="false" />
+
+  <events name="hideShowHotspotsOnNewPanoEvent" onTourStart="set(hideShowHotspotsOnNewPanoState,true);hideShowHotspotsOnNewPanoAction" onPanoStart="if(hideShowHotspotsOnNewPanoState,hideShowHotspotsOnNewPanoAction);" keep="true"/>
   <action name="hideShowHotspotsOnNewPanoAction">
     set(nb_spots, get(hotspot.count));
     if (nb_spots != 0,
