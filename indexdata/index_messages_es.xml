@@ -5,7 +5,7 @@
 <!--         Messages         -->
 <!-- ************************ -->
 
-  <data name="es_project_title"><![CDATA[Salones de Eventos en OCCIDENTAL A BLANCAS]]></data>
+  <data name="es_project_title"><![CDATA[Salones de Eventos]]></data>
   <data name="es_project_author_name"><![CDATA[Camilo Hdez.Perez]]></data>
 
 
@@ -203,7 +203,7 @@ Precio de Coffee Break:<br>
   <data name="es_vr_setup_unavailable"><![CDATA[El modo VR no está disponible en tu dispositivo]]></data>
 
 
-  <data name="es_project_description"><![CDATA[<font face="verdana, sans-serif">En Occidental Arenas Blancas contamos con varios salones de reuniones. No te pierdas este Tour virtual para que conozcas estos espacios creados para eventos...</font>]]></data>
+  <data name="es_project_description"><![CDATA[<font face="verdana, sans-serif">No te pierdas este Tour virtual para que conozcas los Salones de Eventos en Occidental Arenas Blancas, espacios creados especialmente para tu reunión...</font>]]></data>
 
 
 

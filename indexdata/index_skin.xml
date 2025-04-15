@@ -2344,7 +2344,7 @@ getmessage(urltoopen,logowebsiteurl);openurl(get(urltoopen),_blank);
 
   <layer name="button2"
          keep="true"
-         url="%FIRSTXML%/graphics/button2/phone.png"
+         url="%FIRSTXML%/graphics/button2/phone2.png"
          align="bottomright"
          x="20"
          y="190"
@@ -2372,14 +2372,14 @@ getmessage(urltoopen,logowebsiteurl);openurl(get(urltoopen),_blank);
   <action name="showbutton2">if(tour_displaycontrols,set(layer[button2].visible, true);,hidebutton2(););</action>
 
 
-  <!-- Hide / Show Controls -->
-  <action name="hideTourControls">set(tour_displaycontrols, false);events.dispatch(hidetourcontrols);</action>
-  <action name="showTourControls">set(tour_displaycontrols, true); events.dispatch(showtourcontrols);</action>
-
-
   <!-- Tour Information -->
   <action name="hideTourInfo">set(tour_displayinfo, false);events.dispatch(onhidetourinfo);</action>
   <action name="showTourInfo">set(tour_displayinfo, true); events.dispatch(onshowtourinfo);</action>
+
+
+  <!-- Hide / Show Controls -->
+  <action name="hideTourControls">set(tour_displaycontrols, false);events.dispatch(hidetourcontrols);</action>
+  <action name="showTourControls">set(tour_displaycontrols, true); events.dispatch(showtourcontrols);</action>
 
 
   <!-- Sounds Management -->
